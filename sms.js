@@ -7,12 +7,10 @@ const authToken = '4077fe59c42e5c28ce6408f4b6d4b618';
 const client = require('twilio')(accountSid, authToken);
 
 exports.send = function(message, callback){
-	console.log("Inside server...message is :")
-	console.log(message)
 	client.messages.create({
-	    to: message.toNumber,
+	    to: message.message.toNumber,
 	    from: "+13173336853",
-	    body: message.text,
+	    body: message.message.text,
 	}, function(err, message) {
 	   callback(err)
 	});
